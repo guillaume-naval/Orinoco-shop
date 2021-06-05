@@ -82,3 +82,24 @@ h2{
     font-weight:bold;
     font-size:1rem;
 }
+
+.camera{
+    border: black 1px solid;
+    padding: 2rem;
+    margin: 0rem 0rem 2rem 2rem ;
+}
+
+.camera__name{
+    margin-top:0;
+}
+.camera__description{
+    margin-bottom:0;
+    font-size: 1rem;
+}
+.camera__img{
+    width:100%;
+}
+.price{
+    font-weight:bold;
+    font-size:1rem;
+}
