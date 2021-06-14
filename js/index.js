@@ -46,7 +46,7 @@ async function main() {
         let priceProduct = document.createElement("p");
         cardProduct.appendChild(priceProduct);
         priceProduct.setAttribute("class", "price");
-        priceProduct.textContent = product.price + ' $';
+        priceProduct.textContent = product.price / 100 + ' $';
     }
 }
 

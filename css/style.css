@@ -84,22 +84,42 @@ h2{
 }
 
 .camera{
+    display: flex;
     border: black 1px solid;
     padding: 2rem;
-    margin: 0rem 0rem 2rem 2rem ;
 }
-
+.camera__content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding:2rem;
+}
 .camera__name{
-    margin-top:0;
+    padding:0rem 0rem 1rem 0rem;
+    font-size: 2rem;
+    font-weight:100;
 }
 .camera__description{
-    margin-bottom:0;
+    margin-bottom:1rem;
     font-size: 1rem;
 }
 .camera__img{
-    width:100%;
+    width:50%;
+    object-fit: cover;
 }
-.price{
-    font-weight:bold;
-    font-size:1rem;
+.camera__price{
+    font-weight:600;
+    font-size:1.2rem;
+    margin-top:2rem;
+}
+.camera__lens{
+    padding:0.5rem;
+
+}
+.addcart__button{
+    margin-top: 1rem;
+    font-weight: bold;
+    border:0;
+    padding:1rem;
+    width:50%;
 }
