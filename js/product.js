@@ -48,7 +48,7 @@ async function displayCamera() {
     // Camera Lenses
     let lensList = document.createElement("select");
     contentProduct.appendChild(lensList);
-    lensList.setAttribute("class", "camera__lens");
+    lensList.setAttribute("id", "camera__lens");
 
     //Lenses options
     let chooseOne = document.createElement("option")
@@ -73,13 +73,44 @@ async function displayCamera() {
     let addCartButton = document.createElement("button");
     contentProduct.appendChild(addCartButton);
     addCartButton.setAttribute("class", "addcart__button");
+    addCartButton.setAttribute("id", "addcart__button");
     addCartButton.textContent = "Ajouter au panier";
 
-    addCameratoCart(addCartButton, cameraId)
-}
-async function addCameratoCart() {
+    // Enregistrer dans une variable les données récupérées
+    let selectedLense = document.getElementById('camera__lens').value;
+    let cameraOptions = { _id: cameraId, lenses: selectedLense };
 
+    addCameratoCart(addCartButton, cameraOptions)
+
+    // Local storage
+
+    function addCameratoCart() {
+
+        // Button event listener
+        document.getElementById("addcart__button").addEventListener("click", function () {
+
+            let cartContent = JSON.parse(localStorage.getItem("camera"));
+            document.getElementById("addcart__button").textContent = "Ajouté !";
+
+            // check du panier
+
+            // Présence de produits dans le panier
+            if (cartContent) {
+                cartContent.push(cameraOptions);
+                localStorage.setItem("camera", JSON.stringify(cartContent));
+                console.log(cartContent);
+            }
+            // Pas de produits dans le panier
+            else {
+                cartContent = [];
+                cartContent.push(cameraOptions);
+                localStorage.setItem("camera", JSON.stringify(cartContent));
+                console.log(cartContent);
+            }
+        });
+    }
 }
+
 
 //Fetch un seul produit
 
