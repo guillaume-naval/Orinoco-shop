@@ -47,13 +47,14 @@ async function displayCamera() {
 
     // Camera Lenses
     let lensList = document.createElement("select");
+    lensList.setAttribute("required", "required");
     contentProduct.appendChild(lensList);
     lensList.setAttribute("id", "camera__lens");
 
     //Lenses options
     let chooseOne = document.createElement("option")
     lensList.appendChild(chooseOne);
-    chooseOne.setAttribute("value", "Choose lens");
+    chooseOne.setAttribute("value", "");
     chooseOne.textContent = "Choisissez l'objectif ...";
 
     for (i = 0; i < cameraInfos.lenses.length; i++) {
@@ -76,34 +77,30 @@ async function displayCamera() {
     addCartButton.setAttribute("id", "addcart__button");
     addCartButton.textContent = "Ajouter au panier";
 
-    // Enregistrer dans une variable les données récupérées
-    let selectedLense = document.getElementById('camera__lens').value;
-    let cameraOptions = { _id: cameraId, lenses: selectedLense };
-
-    addCameratoCart(addCartButton, cameraOptions)
+    addCameratoCart(addCartButton, cameraId)
 
     // Local storage
 
-    function addCameratoCart() {
+    function addCameratoCart(button, cameraToCart) {
 
         // Button event listener
-        document.getElementById("addcart__button").addEventListener("click", function () {
+        button.addEventListener("click", function () {
 
             let cartContent = JSON.parse(localStorage.getItem("camera"));
-            document.getElementById("addcart__button").textContent = "Ajouté !";
+            button.textContent = "Ajouté !";
 
             // check du panier
 
             // Présence de produits dans le panier
             if (cartContent) {
-                cartContent.push(cameraOptions);
+                cartContent.push(cameraToCart);
                 localStorage.setItem("camera", JSON.stringify(cartContent));
                 console.log(cartContent);
             }
             // Pas de produits dans le panier
             else {
                 cartContent = [];
-                cartContent.push(cameraOptions);
+                cartContent.push(cameraToCart);
                 localStorage.setItem("camera", JSON.stringify(cartContent));
                 console.log(cartContent);
             }
