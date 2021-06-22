@@ -47,9 +47,8 @@ async function displayCamera() {
 
     // Camera Lenses
     let lensList = document.createElement("select");
-    lensList.setAttribute("required", "required");
     contentProduct.appendChild(lensList);
-    lensList.setAttribute("id", "camera__lens");
+    lensList.setAttribute("class", "camera__lens");
 
     //Lenses options
     let chooseOne = document.createElement("option")
@@ -68,16 +67,23 @@ async function displayCamera() {
     let priceProduct = document.createElement("p");
     contentProduct.appendChild(priceProduct);
     priceProduct.setAttribute("class", "camera__price");
-    priceProduct.textContent = cameraInfos.price / 100 + ' $';
+    priceProduct.textContent = cameraInfos.price / 100 + ' €';
 
     // Add to cart button
     let addCartButton = document.createElement("button");
     contentProduct.appendChild(addCartButton);
     addCartButton.setAttribute("class", "addcart__button");
     addCartButton.setAttribute("id", "addcart__button");
+    /* document.getElementById("addcart__button").disabled = true; */
     addCartButton.textContent = "Ajouter au panier";
 
     addCameratoCart(addCartButton, cameraId)
+
+    // Check selected Lens
+
+    
+
+    
 
     // Local storage
 
@@ -87,8 +93,8 @@ async function displayCamera() {
         button.addEventListener("click", function () {
 
             let cartContent = JSON.parse(localStorage.getItem("camera"));
-            button.textContent = "Ajouté !";
-
+            // Check choix d'objectif
+            
             // check du panier
 
             // Présence de produits dans le panier
@@ -120,23 +126,3 @@ function getProductData(cameraId) {
             alert(error)
         })
 }
-
-/*document.getElementById("main-product").innerHTML == `
-        < article class="camera" >
-            <img class="camera__img" src="${cameraInfos.imageUrl}">
-                <div class="camera__content">
-                    <h2 class="camera__name">${cameraInfos.name}</h2>
-                    <p class="camera__description">${cameraInfos.description}</p>
-                    <p class="camera__price">${cameraInfos.price / 100} $</p>
-                    <select class="camera__lense" id="camera__lense">
-                        <option value""> Choose a lense </option>
-                    </select >
-                </div>
-        </article>`
-
-    let varLense = ""
-    for (i = 0; i < cameraInfos.lenses.length; i++) {
-        varLense += "<option value=${" + cameraInfos.lenses[i] + "}>${cameraInfos.lenses[i]}</option>";
-    }
-    document.getElementById("camera__lense").innerHTML = varLense;
-*/

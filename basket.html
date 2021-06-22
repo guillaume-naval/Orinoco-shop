@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="https://kit.fontawesome.com/fc875cabde.js" crossorigin="anonymous"></script>
+        <script src="./js/basket.js" defer></script>
+        <title>Orinoco</title>
+    </head>
+    <body>
+        <!-- HEADER -->
+        <header>
+            <a href="index.html"><img class="logo" src="img/logo.png"></a>
+            <a href="basket.html"><i class="fas fa-shopping-basket"><p class="cart__title">Panier</p></i></a>
+        </header>
+        
+        <!-- MAIN -->
+        <main id="main-basket">
+            <!-- Commande -->
+            <section id="basket-content">
+                <!-- Articles présent dans le panier -->
+                <h2>Votre panier</h2>
+                <div id="basket-products">
+                    <div id="product_name">
+                        <p class="basket_title">Produit</p>
+                        
+                    </div>
+                     <!-- <div id="product_quantity">
+                        
+                    </div> --> 
+                    <div id="product_price">
+                        <p class="basket_title">Prix</p>
+                        
+                    </div>
+                    <div id="product_total">
+                        <p class="basket_title">Total</p>
+                        
+                    </div>
+                </div>
+                <!-- Prix total de la commande -->
+                <div class="grp-price-clear">
+                    <div id="basket-price">
+                        <div id="total__title">TOTAL</div>
+                        <div id="total__price"></div>
+                    </div>
+                    <!-- Bouton vider le panier -->
+                    <div id="clear-basket">
+                    </div>
+                </div>
+            </section>
+            <h2>Livraison</h2>
+            <form id="form">
+                <div class="form-contener">
+                    <!--Nom-->
+                    <div class="last-name">
+                        <label for="lastName" class="form-text">Nom</label>
+                        <input type="text" class="form-control " id="lastName" placeholder="Prévert" required>
+                    </div>
+                    <!--Prénom-->
+                    <div class="first-name">
+                        <label for="firstName" class="form-text">Prénom</label>
+                        <input type="text" class="form-control " id="firstName" placeholder="Jacques" required>
+                    </div>
+                </div>
+                <div class="form-contener">
+                    <!--Adresse-->
+                    <div class="adress">
+                        <label for="address" class="form-text">Adresse</label>
+                        <input type="text" class="form-control " id="address" placeholder="42 rue de Paradis"
+                            required>
+                    </div>
+                    <!--Ville-->
+                    <div class="city">
+                        <label for="city" class="form-text">Ville</label>
+                        <input type="text" class="form-control " id="city" placeholder="PARIS" required>
+
+                    </div>
+                </div>
+                <div class="form-contener">
+                    <!--Email-->
+                    <div class="email">
+                        <label for="email" class="form-text">Email</label>
+                        <input type="email" class="form-email" id="email" placeholder="jacques.prevert@mail.com"
+                            required>
+                        <span class="error" aria-live="polite"></span>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </body>
+</html>
