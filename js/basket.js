@@ -1,7 +1,6 @@
 
 let basketContent = JSON.parse(localStorage.getItem("camera"));
 console.log(basketContent);
-
 // Remplissage des informations du panier (lecture du localStorage)
 
 showBasket()
@@ -59,3 +58,70 @@ function clearBasket() {
         })
 }
 
+//Vérification formulaire
+
+validateForm()
+function validateForm() {
+    let contenerButton = document.getElementById('confirm-contener');
+    let buttonValidate = document.createElement("button");
+    contenerButton.appendChild(buttonValidate);
+    buttonValidate.setAttribute("id", "btn-commande");
+    let buttonOrder = document.getElementById('btn-commande');
+    buttonValidate.textContent = "Confirmer la commande";
+
+    buttonOrder.addEventListener('click', function () {
+        let firstname = document.getElementById('firstName').value;
+        let lastname = document.getElementById('lastName').value;
+        let address = document.getElementById('address').value;
+        let city = document.getElementById('city').value;
+        let email = document.getElementById('email').value;
+        if (firstname, lastname, address, city, email != "" && /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {
+            confirmationOrder();
+            return true;
+        } else {
+            alert("Saisissez tous les champs et entrez un email valide");
+            return false;
+        }
+})
+}
+
+function confirmationOrder() {
+    let firstname = document.getElementById('firstName').value;
+    let lastname = document.getElementById('lastName').value;
+    let address = document.getElementById('address').value;
+    let city = document.getElementById('city').value;
+    let email = document.getElementById('email').value;
+    order = {firstName:firstname, lastName:lastname, address:address, city:city,email:email };
+    dataToPost = JSON.stringify({ order, basketContent });
+        console.log(dataToPost);
+        postForm(dataToPost);
+}
+
+// Récupération de l'ID de la réponse de l'API et stockage
+function getOrderConfirmationId(responseId) {
+    let orderId = responseId.orderId;
+    console.log(orderId);
+    localStorage.setItem("orderConfirmationId", orderId);
+}
+
+// Fonction qui envoie les informations du formulaire et du panier
+async function postForm(dataToPost) {
+    try {
+        let response = await fetch("http://localhost:3000/api/cameras/order", {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: dataToPost,
+        });
+        if (response.ok) {
+            let responseId = await response.json();
+            getOrderConfirmationId(responseId);
+            window.location.href = "confirm.html";
+        } else {
+            console.error('Retour du serveur : ', response.status);
+        }
+    } catch (e) {
+        console.log(e);
+    }
+}

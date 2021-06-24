@@ -201,11 +201,27 @@ h2{
     display:flex;
     flex-direction: column;
     flex-wrap:wrap;
-    margin-right:0.5rem;
-    margin-top:0.5rem;
+    margin:0.5rem 1rem 0rem 0rem;
+}
+#form input{
+    padding:0.3rem;
+    margin-top: 0.5rem;
 }
 
 #clear-basket{
     margin-top:1rem;
     align-self:flex-end;
+}
+#btn-commande {
+    flex-basis:100%;
+    margin-top:1rem;
+    border:none;
+    padding:0.5rem;
+}
+.btn-clear{
+    border:none;
+    padding:0.5rem;
+}
+#btn-commande:hover,.btn-clear:hover{
+    background: rgb(200, 200, 200);
 }
