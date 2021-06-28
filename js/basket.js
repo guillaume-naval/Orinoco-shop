@@ -1,6 +1,8 @@
 
 let basketContent = JSON.parse(localStorage.getItem("camera"));
-console.log(basketContent);
+
+let products= basketContent;
+console.log(products);
 // Remplissage des informations du panier (lecture du localStorage)
 
 showBasket()
@@ -38,8 +40,8 @@ async function showBasket() {
     document.getElementById("total__price").innerHTML += `
     <div>${total +" €"}</div>
     `
+    localStorage.setItem("total", total);
 }
-
 // Vider le panier
 
 clearBasket()
@@ -91,8 +93,10 @@ function confirmationOrder() {
     let address = document.getElementById('address').value;
     let city = document.getElementById('city').value;
     let email = document.getElementById('email').value;
-    order = {firstName:firstname, lastName:lastname, address:address, city:city,email:email };
-    dataToPost = JSON.stringify({ order, basketContent });
+   
+    contact = {firstName:firstname, lastName:lastname, address:address, city:city,email:email };
+    dataToPost = JSON.stringify({ contact, products });
+    
         console.log(dataToPost);
         postForm(dataToPost);
 }
@@ -118,6 +122,7 @@ async function postForm(dataToPost) {
             let responseId = await response.json();
             getOrderConfirmationId(responseId);
             window.location.href = "confirm.html";
+            console.log(responseId);
         } else {
             console.error('Retour du serveur : ', response.status);
         }
