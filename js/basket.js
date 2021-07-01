@@ -77,14 +77,19 @@ function validateForm() {
         let address = document.getElementById('address').value;
         let city = document.getElementById('city').value;
         let email = document.getElementById('email').value;
-        if (firstname.length &&lastname.length &&address.length  && city.length >= 2 && email != "" && /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {
-            confirmationOrder();
-            return true;
-        } else {
-            alert("Saisissez tous les champs et entrez un email valide");
+
+        if (firstname.length<= 2 &&lastname.length<= 2 &&address.length<= 2  && city.length <= 2 && email.length <=2) {
+            alert("Saisissez tous les champs doivent contenir au moins 2 caractères");
             return false;
+        } else if (email=!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+            alert("Entrez un email valide");
+            return false;
+        } else {
+            confirmationOrder();
+            return true;     
         }
-})
+               
+    })
 }
 
 function confirmationOrder() {
