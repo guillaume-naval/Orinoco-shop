@@ -78,7 +78,7 @@ function validateForm() {
         let city = document.getElementById('city').value;
         let email = document.getElementById('email').value;
 
-        if (firstname.length<= 2 &&lastname.length<= 2 &&address.length<= 2  && city.length <= 2 && email.length <=2) {
+        if (firstname.length < 2 || lastname.length < 2 || address.length< 2  || city.length < 2) {
             alert("Saisissez tous les champs doivent contenir au moins 2 caractères");
             return false;
         } else if (email=!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
@@ -86,6 +86,7 @@ function validateForm() {
             return false;
         } else {
             confirmationOrder();
+            console.log(firstname.length);
             return true;     
         }
                
