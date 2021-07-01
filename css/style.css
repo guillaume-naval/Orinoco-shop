@@ -241,6 +241,8 @@ h2{
 }
 #basket-products{
     margin-top:1rem;
+    padding-bottom:1rem;
+    background:lightgrey;
 }
 @media screen and (max-width: 1050px) {
     .card__link{
