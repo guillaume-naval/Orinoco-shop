@@ -101,7 +101,7 @@ function validateForm() {
                
     })
 }
-// Création de l'objet contact et le tableau products
+// Création de l'objet contact et le tableau products et POST
 function confirmationOrder() {
     let firstname = document.getElementById('firstName').value;
     let lastname = document.getElementById('lastName').value;

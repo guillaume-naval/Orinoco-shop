@@ -76,23 +76,23 @@ async function displayCamera() {
     addCartButton.setAttribute("id", "addcart__button");
     document.getElementById("addcart__button").disabled = true;
     addCartButton.textContent = "Ajouter au panier";
-
     addCameratoCart(addCartButton, cameraId)
 
-    // Check selected Lens
+        // Check selected Lens
+    function checkSelectedLens() {
     var activities = document.getElementById("camera__lens");
-    
-    activities.addEventListener("change", function() {
-        console.log(activities.value)
-        if(activities.value !== "")
-        {
-            document.getElementById("addcart__button").disabled = false;
-        }
-        else{
-            document.getElementById("addcart__button").disabled = true;
-        }
-    });
-    
+        activities.addEventListener("change", function() {
+            console.log(activities.value)
+            if(activities.value !== "")
+            {
+                document.getElementById("addcart__button").disabled = false;
+            }
+            else{
+                document.getElementById("addcart__button").disabled = true;
+            }
+        });
+    }
+    checkSelectedLens()
     // Local storage - Ajout du produit dans le panier
 
     function addCameratoCart(button, cameraToCart) {
