@@ -8,39 +8,44 @@ console.log(products);
 showBasket()
 async function showBasket() {
     let total = 0;
-    for (i=0; i< basketContent.length; i++) {
-        let cameraId = basketContent[i];
-        console.log(cameraId);
-       
-        function getProductData(cameraId) {
-            return fetch("http://localhost:3000/api/cameras/" + cameraId)
-                .then(function (res) {
-                    return res.json()
-                })
-                .catch(function (error) {
-                    alert(error)
-                })
+    if (basketContent == null || basketContent == "")
+    {
+        document.getElementById("basket-products").innerHTML = "Le panier est vide";
+    }else {
+        for (i=0; i< basketContent.length; i++) {
+            let cameraId = basketContent[i];
+            console.log(cameraId);
+        
+            function getProductData(cameraId) {
+                return fetch("http://localhost:3000/api/cameras/" + cameraId)
+                    .then(function (res) {
+                        return res.json()
+                    })
+                    .catch(function (error) {
+                        alert(error)
+                    })
 
+            }
+            let cameraInfos = await getProductData(cameraId);
+            total += cameraInfos.price/100;
+            console.log(total);
+            console.log(cameraInfos);
+
+            document.getElementById("product_name").innerHTML += `
+            <div>${cameraInfos.name}</div>
+            `
+            document.getElementById("product_price").innerHTML += `
+            <div>${cameraInfos.price/100 +" €"}</div>
+            `
+            document.getElementById("product_total").innerHTML += `
+            <div>${cameraInfos.price/100 +" €"}</div>
+            `
         }
-        let cameraInfos = await getProductData(cameraId);
-        total += cameraInfos.price/100;
-        console.log(total);
-        console.log(cameraInfos);
-
-        document.getElementById("product_name").innerHTML += `
-        <div>${cameraInfos.name}</div>
+        document.getElementById("total__price").innerHTML += `
+        <div>${total +" €"}</div>
         `
-        document.getElementById("product_price").innerHTML += `
-        <div>${cameraInfos.price/100 +" €"}</div>
-        `
-        document.getElementById("product_total").innerHTML += `
-        <div>${cameraInfos.price/100 +" €"}</div>
-        `
+        localStorage.setItem("total", total);
     }
-    document.getElementById("total__price").innerHTML += `
-    <div>${total +" €"}</div>
-    `
-    localStorage.setItem("total", total);
 }
 // Vider le panier
 
@@ -55,7 +60,7 @@ function clearBasket() {
 
     buttonClearBasket.addEventListener('click', function () {
         localStorage.clear();
-        document.getElementById("basket-products").innerHTML = "";
+        document.getElementById("basket-products").innerHTML = "Le panier est vide";
         document.getElementById("total__price").innerHTML = "";
         })
 }
@@ -77,18 +82,22 @@ function validateForm() {
         let address = document.getElementById('address').value;
         let city = document.getElementById('city').value;
         let email = document.getElementById('email').value;
+        
+            if (firstname.length < 2 || lastname.length < 2 || address.length< 2  || city.length < 2) {
+                alert("Saisissez tous les champs doivent contenir au moins 2 caractères");
+                return false;
+            } else if (email=!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+                alert("Entrez un email valide");
+                return false;
+            } else if(basketContent = null || basketContent == "") {
+                alert("Le panier est vide");
+                return false;    
+            } else {
+                confirmationOrder();
+                console.log(firstname.length);
+                return true;     
+            }
 
-        if (firstname.length < 2 || lastname.length < 2 || address.length< 2  || city.length < 2) {
-            alert("Saisissez tous les champs doivent contenir au moins 2 caractères");
-            return false;
-        } else if (email=!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-            alert("Entrez un email valide");
-            return false;
-        } else {
-            confirmationOrder();
-            console.log(firstname.length);
-            return true;     
-        }
                
     })
 }

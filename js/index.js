@@ -1,6 +1,6 @@
 main()
 
-// FONCTION MAIN DE LA PAGE
+// FONCTION MAIN DE LA PAGE - AFFICHAGE DES PRODUITS
 
 async function main() {
     const products = await getProducts()
@@ -62,16 +62,5 @@ function getProducts() {
         })
 }
 
-/*  AFFICHAGE DES PRODUITS
-
-function displayProducts(product) {
-    document.getElementById("main").innerHTML += `
-    <article class="product">
-        <h2 class="product__name">${product.name}</h2>
-        <img class="product__img" src="${product.imageUrl}">
-        <p class="product__description">${product.description}</p>
-    </article>`
-}
-*/
 
 
