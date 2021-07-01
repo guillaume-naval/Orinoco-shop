@@ -93,7 +93,7 @@ async function displayCamera() {
         }
     });
     
-    // Local storage
+    // Local storage - Ajout du produit dans le panier
 
     function addCameratoCart(button, cameraToCart) {
 
@@ -103,13 +103,14 @@ async function displayCamera() {
             let cartContent = JSON.parse(localStorage.getItem("camera"));
             // Check choix d'objectif
             
-            // check du panier
+            // Check du panier
 
             // Présence de produits dans le panier
             if (cartContent) {
                 cartContent.push(cameraToCart);
                 localStorage.setItem("camera", JSON.stringify(cartContent));
                 console.log(cartContent);
+                alert("Produit ajouté au panier !");
             }
             // Pas de produits dans le panier
             else {
@@ -117,6 +118,7 @@ async function displayCamera() {
                 cartContent.push(cameraToCart);
                 localStorage.setItem("camera", JSON.stringify(cartContent));
                 console.log(cartContent);
+                alert("Produit ajouté au panier !");
             }
         });
     }

@@ -119,6 +119,10 @@ h2{
     border:0;
     padding:1rem;
 }
+
+.addcart__button:hover:enabled{
+    background:rgb(202, 202, 202);
+}
 #main-basket{
     display: flex;
     flex-direction: column;
