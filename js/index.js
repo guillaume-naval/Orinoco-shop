@@ -1,8 +1,8 @@
-main()
+displayAllProducts()
 
 // FONCTION MAIN DE LA PAGE - AFFICHAGE DES PRODUITS
 
-async function main() {
+async function displayAllProducts() {
     const products = await getProducts()
     console.log(products)
 

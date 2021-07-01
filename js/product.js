@@ -81,15 +81,15 @@ async function displayCamera() {
 
     // Check selected Lens
     var activities = document.getElementById("camera__lens");
-
+    
     activities.addEventListener("change", function() {
+        console.log(activities.value)
         if(activities.value !== "")
         {
             document.getElementById("addcart__button").disabled = false;
         }
         else{
             document.getElementById("addcart__button").disabled = true;
-
         }
     });
     
