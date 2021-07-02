@@ -40,16 +40,21 @@ main{
 .logo{
     height:8rem;  
 }
+.basket__link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 2rem;
+}
 .fa-shopping-basket{
     font-size: 2rem;
     color:rgb(156, 113, 235);
-    margin-right:2rem;
-    text-align: center;
 }
 .cart__title{
     font-size: 1.2rem;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 600;
+    color:rgb(156, 113, 235);
 }
 h1{
     margin:0;
@@ -273,9 +278,10 @@ h2{
     }
     .fa-shopping-basket{
         font-size: 1.5rem;
+    }
+    .basket__link{
         margin-right:0.5rem;
     }
-
     main{
         max-width:90%;
     }
