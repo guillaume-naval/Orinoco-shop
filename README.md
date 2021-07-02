@@ -32,7 +32,7 @@ Ce projet s’inscrit dans le cadre de la formation “Développeur web” propo
 - Écrivez du JavaScript pour le web
 - Créez des sites web responsive avec Bootstrap 4
 
-You will need to have Node and `npm` installed locally on your machine.
+Vous aurez besoin d'avoir Node et `npm` installé localement sur votre machine.
 
 
 ### Installation ###
