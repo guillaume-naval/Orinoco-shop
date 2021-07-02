@@ -39,7 +39,7 @@ _exemples :_
 * [Materialize.css](http://materializecss.com) - Framework CSS (front-end)
 * [Atom](https://atom.io/) - Editeur de textes
 
-## Auteurs
-Listez le(s) auteur(s) du projet ici !
+## Auteur
+
 **Guillaume NAVAL** (https://github.com/guillaume-naval)
 
